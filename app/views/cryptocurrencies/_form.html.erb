@@ -1,0 +1,36 @@
+<%= form_with(model: cryptocurrency) do |form| %>
+  <% if cryptocurrency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cryptocurrency.errors.count, "error") %> prohibited this cryptocurrency from being saved:</h2>
+
+      <ul>
+        <% cryptocurrency.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :symbol %>
+    <%= form.text_field :symbol %>
+  </div>
+
+  <div class="field">
+    <%= form.number_field :user_id, value: current_user.id, type: "hidden" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost_per %>
+    <%= form.text_field :cost_per %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
